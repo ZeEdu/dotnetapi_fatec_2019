@@ -27,7 +27,7 @@ namespace Store.BusinessLogic.BL
 
         public Cliente Consultar(int idCliente)
         {
-            throw new NotImplementedException();
+            return this._clienteDao.Select(idCliente);
         }
 
         public Cliente Inserir(Cliente cliente)
@@ -43,7 +43,8 @@ namespace Store.BusinessLogic.BL
 
         public Cliente Logar(Cliente cliente)
         {
-            throw new NotImplementedException();
+            cliente.Senha = HashMD5.GetHash(cliente.Senha);
+            return this._clienteDao.Select(cliente);
         }
 
         public void Dispose()

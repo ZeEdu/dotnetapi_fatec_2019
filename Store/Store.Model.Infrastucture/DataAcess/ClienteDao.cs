@@ -74,7 +74,7 @@ namespace Store.Model.Infrastucture.DataAcess
 
         protected override void SqlBase()
         {
-            this.Sql.Append(" SELET * FROM TB_CLIENTE ");
+            this.Sql.Append(" SELECT * FROM TB_CLIENTE ");
         }
 
         public List<Cliente> Select()
@@ -87,6 +87,8 @@ namespace Store.Model.Infrastucture.DataAcess
             this.SqlBase();
 
             this.Sql.Append(" WHERE TB_CLIENTE.ID = @ID");
+
+            this.AddParameter("@ID", id);
 
             return ConverObject();
             
@@ -101,7 +103,7 @@ namespace Store.Model.Infrastucture.DataAcess
 
         public Cliente Select(Cliente cliente)
         {
-            this.Sql.Append(" SELET * FROM TB_CLIENTE ");
+            this.Sql.Append(" SELECT * FROM TB_CLIENTE ");
             this.Sql.Append(" WHERE TB_CLIENTE.EMAIL = @EMAIL AND ");
             this.Sql.Append("       TB_CLIENTE.SENHA = @SENHA");
 
